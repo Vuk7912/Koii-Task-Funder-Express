@@ -18,8 +18,8 @@ export const validateRequest = (schema: z.ZodObject<any>) => {
 
       // Explicitly match the expected structure
       req.validatedData = {
-        body: req.body || {},
-        params: req.params || {},
+        body: {},
+        params: validatedData.params || {},
         query: validatedData.query || {}
       };
 
@@ -65,16 +65,7 @@ export const coinDetailsSchema = z.object({
     market_data: z.string().optional().transform(val => val === 'true').default('false'),
     community_data: z.string().optional().transform(val => val === 'true').default('false')
   }).optional()
-}).transform(data => ({
-  body: {},
-  params: data.params,
-  query: data.query ? {
-    localization: data.query.localization,
-    market_data: data.query.market_data,
-    tickers: data.query.tickers,
-    community_data: data.query.community_data
-  } : {}
-}));
+});
 
 /**
  * Schema for market data request validation
