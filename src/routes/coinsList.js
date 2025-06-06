@@ -1,15 +1,15 @@
-import * as mockCryptoPrices from '../data/crypto-prices.json';
+import mockCryptoPrices from '../data/crypto-prices.json';
 
 /**
  * Retrieves the list of coins from mock cryptocurrency data
  * @returns {Array} List of coins with id, symbol, and name
  */
 export function getCoinsList() {
-  // Return a copy of the mock data to prevent direct mutation
-  return mockCryptoPrices.default.map(coin => ({
-    id: coin.id,
-    symbol: coin.symbol,
-    name: coin.name
+  // Transform the object into an array of coins
+  return Object.keys(mockCryptoPrices).map(key => ({
+    id: mockCryptoPrices[key].id,
+    symbol: mockCryptoPrices[key].symbol,
+    name: mockCryptoPrices[key].name
   }));
 }
 
