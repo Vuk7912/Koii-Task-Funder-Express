@@ -2,6 +2,12 @@ import { describe, it, expect, vi } from 'vitest';
 import { validateRequest, coinListSchema, coinDetailsSchema, marketDataSchema } from '../src/middleware/validation';
 import { Request, Response, NextFunction } from 'express';
 
+declare module 'express' {
+  interface Request {
+    validatedData?: any;
+  }
+}
+
 describe('Input Validation Middleware', () => {
   // Mock Express objects
   const createMockRequest = (data: any) => ({
@@ -69,7 +75,12 @@ describe('Input Validation Middleware', () => {
       expect(req.validatedData).toEqual({
         body: {},
         params: { coinId: 'bitcoin' },
-        query: { localization: true, market_data: true }
+        query: { 
+          localization: true, 
+          market_data: true, 
+          tickers: false,
+          community_data: false 
+        }
       });
     });
 
