@@ -1,4 +1,11 @@
-node_modules
+node_modules/
+dist/
 .env
-.env.funder
-*.pem
+*.log
+.DS_Store
+coverage/
+.nyc_output/
+.vscode/
+.idea/
+*.swp
+*.swo
