@@ -1,42 +1,104 @@
 {
-    "bitcoin": {
-        "id": "bitcoin",
-        "symbol": "btc",
-        "name": "Bitcoin",
-        "current_price": 45000.50,
-        "market_cap": 850000000000,
-        "market_cap_rank": 1,
-        "total_volume": 25000000000,
-        "price_change_percentage_24h": 2.5
+  "coins": [
+    {
+      "id": "bitcoin",
+      "symbol": "btc",
+      "name": "Bitcoin",
+      "description": "Bitcoin is the first decentralized cryptocurrency created in 2009.",
+      "image": {
+        "thumb": "https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png",
+        "small": "https://assets.coingecko.com/coins/images/1/small/bitcoin.png",
+        "large": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png"
+      },
+      "market_data": {
+        "current_price": {
+          "usd": 50000,
+          "eur": 42000,
+          "jpy": 5500000
+        },
+        "market_cap": {
+          "usd": 950000000000,
+          "eur": 800000000000,
+          "jpy": 110000000000000
+        },
+        "total_volume": {
+          "usd": 25000000000,
+          "eur": 21000000000,
+          "jpy": 3000000000000
+        },
+        "price_change_percentage_24h": -1.5,
+        "price_change_percentage_7d": 3.2,
+        "price_change_percentage_30d": 5.7
+      },
+      "links": {
+        "homepage": ["https://bitcoin.org/"],
+        "blockchain_site": ["https://blockchain.info/", "https://btc.com/"],
+        "official_forum_url": ["https://bitcointalk.org/"]
+      },
+      "community_data": {
+        "facebook_likes": null,
+        "twitter_followers": 5000000,
+        "reddit_subscribers": 2500000
+      },
+      "developer_data": {
+        "forks": 200,
+        "stars": 50000,
+        "subscribers": 5000,
+        "total_issues": 1000,
+        "closed_issues": 800,
+        "pull_requests_merged": 1500,
+        "commit_count_4_weeks": 350
+      }
     },
-    "ethereum": {
-        "id": "ethereum", 
-        "symbol": "eth",
-        "name": "Ethereum",
-        "current_price": 3200.75,
-        "market_cap": 380000000000,
-        "market_cap_rank": 2,
-        "total_volume": 15000000000,
-        "price_change_percentage_24h": 1.8
-    },
-    "cardano": {
-        "id": "cardano",
-        "symbol": "ada", 
-        "name": "Cardano",
-        "current_price": 1.25,
-        "market_cap": 40000000000,
-        "market_cap_rank": 7,
-        "total_volume": 2000000000,
-        "price_change_percentage_24h": 3.2
-    },
-    "dogecoin": {
-        "id": "dogecoin",
-        "symbol": "doge",
-        "name": "Dogecoin", 
-        "current_price": 0.15,
-        "market_cap": 20000000000,
-        "market_cap_rank": 10,
-        "total_volume": 1000000000,
-        "price_change_percentage_24h": 4.5
+    {
+      "id": "ethereum",
+      "symbol": "eth",
+      "name": "Ethereum",
+      "description": "Ethereum is a decentralized, open-source blockchain platform.",
+      "image": {
+        "thumb": "https://assets.coingecko.com/coins/images/279/thumb/ethereum.png",
+        "small": "https://assets.coingecko.com/coins/images/279/small/ethereum.png",
+        "large": "https://assets.coingecko.com/coins/images/279/large/ethereum.png"
+      },
+      "market_data": {
+        "current_price": {
+          "usd": 3500,
+          "eur": 2950,
+          "jpy": 390000
+        },
+        "market_cap": {
+          "usd": 420000000000,
+          "eur": 355000000000,
+          "jpy": 49000000000000
+        },
+        "total_volume": {
+          "usd": 15000000000,
+          "eur": 12700000000,
+          "jpy": 1800000000000
+        },
+        "price_change_percentage_24h": -0.8,
+        "price_change_percentage_7d": 2.5,
+        "price_change_percentage_30d": 4.1
+      },
+      "links": {
+        "homepage": ["https://ethereum.org/"],
+        "blockchain_site": ["https://etherscan.io/"],
+        "official_forum_url": ["https://ethereum.org/community"]
+      },
+      "community_data": {
+        "facebook_likes": null,
+        "twitter_followers": 3500000,
+        "reddit_subscribers": 1500000
+      },
+      "developer_data": {
+        "forks": 500,
+        "stars": 35000,
+        "subscribers": 3500,
+        "total_issues": 2000,
+        "closed_issues": 1500,
+        "pull_requests_merged": 2500,
+        "commit_count_4_weeks": 550
+      }
     }
+  ]
 }
