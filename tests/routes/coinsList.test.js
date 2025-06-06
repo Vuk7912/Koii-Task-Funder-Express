@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getCoinsList } from '../../src/routes/coinsList';
-import mockCryptoPrices from '../../src/data/crypto-prices.json';
+import * as mockCryptoPrices from '../../src/data/crypto-prices.json';
 
 describe('Coins List Endpoint', () => {
   it('should return a list of all coins', () => {
@@ -19,7 +19,7 @@ describe('Coins List Endpoint', () => {
 
   it('should return correct number of coins', () => {
     const coinsList = getCoinsList();
-    expect(coinsList.length).toBe(mockCryptoPrices.length);
+    expect(coinsList.length).toBe(mockCryptoPrices.default.length);
   });
 
   it('should handle empty data gracefully', () => {
@@ -35,7 +35,7 @@ describe('Coins List Endpoint', () => {
     const coinsList = getCoinsList();
     
     coinsList.forEach((coin, index) => {
-      const originalCoin = mockCryptoPrices[index];
+      const originalCoin = mockCryptoPrices.default[index];
       
       expect(coin.id).toBe(originalCoin.id);
       expect(coin.symbol).toBe(originalCoin.symbol);
