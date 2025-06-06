@@ -4,8 +4,8 @@ import { createServer } from '../src/server';
 
 describe('Server Configuration', () => {
   it('should create a server with health check endpoint', async () => {
-    const app = createServer();
-    const response = await request(app)
+    const server = createServer();
+    const response = await request(server)
       .get('/')
       .expect('Content-Type', /json/)
       .expect(200);
