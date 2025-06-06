@@ -1,4 +1,4 @@
-import mockCryptoPrices from '../data/crypto-prices.json' assert { type: 'json' };
+import * as mockCryptoPrices from '../data/crypto-prices.json';
 
 /**
  * Retrieves the list of coins from mock cryptocurrency data
@@ -6,7 +6,7 @@ import mockCryptoPrices from '../data/crypto-prices.json' assert { type: 'json' 
  */
 export function getCoinsList() {
   // Return a copy of the mock data to prevent direct mutation
-  return mockCryptoPrices.map(coin => ({
+  return mockCryptoPrices.default.map(coin => ({
     id: coin.id,
     symbol: coin.symbol,
     name: coin.name
