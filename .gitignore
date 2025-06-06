@@ -1,4 +1,7 @@
-node_modules
+node_modules/
+dist/
 .env
-.env.funder
-*.pem
+__pycache__/
+coverage/
+*.log
+.DS_Store
