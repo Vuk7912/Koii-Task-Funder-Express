@@ -37,7 +37,7 @@ export function createCache(customConfig: CacheConfig = {}): NodeCache {
     throw new Error('stdTTL must be a non-negative number');
   }
 
-  if (config.maxKeys && config.maxKeys <= 0) {
+  if (config.maxKeys !== undefined && config.maxKeys <= 0) {
     throw new Error('maxKeys must be a positive number');
   }
 
