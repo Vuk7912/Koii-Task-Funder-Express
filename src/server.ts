@@ -1,10 +1,11 @@
 import express, { Express, Request, Response } from 'express';
+import http from 'http';
 
 /**
  * Creates and configures an Express server for the CoinGecko Mock API
- * @returns {Express} Configured Express application
+ * @returns {http.Server} HTTP Server instance
  */
-export function createServer(): Express {
+export function createServer(): http.Server {
   const app: Express = express();
   const PORT: number = parseInt(process.env.PORT || '3000', 10);
 
@@ -20,14 +21,17 @@ export function createServer(): Express {
     });
   });
 
+  // Create HTTP server
+  const server = http.createServer(app);
+
   // Start server method
-  function start() {
-    return app.listen(PORT, () => {
+  server.start = function() {
+    return this.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
-  }
+  };
 
-  return { ...app, start };
+  return server;
 }
 
 // Only start server if not in test environment
