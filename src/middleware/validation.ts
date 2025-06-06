@@ -16,8 +16,13 @@ export const validateRequest = (schema: z.ZodObject<any>) => {
         query: req.query
       });
 
-      // Attach validated data to the request for downstream use
-      req.validatedData = validatedData;
+      // Explicitly match the expected structure
+      req.validatedData = {
+        body: req.body || {},
+        params: req.params || {},
+        query: validatedData.query
+      };
+
       next();
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -56,9 +61,9 @@ export const coinDetailsSchema = z.object({
   }),
   query: z.object({
     localization: z.string().optional().transform(val => val === 'true'),
-    tickers: z.string().optional().transform(val => val === 'true'),
-    market_data: z.string().optional().transform(val => val === 'true'),
-    community_data: z.string().optional().transform(val => val === 'true')
+    tickers: z.string().optional().transform(val => val === 'true').default('false'),
+    market_data: z.string().optional().transform(val => val === 'true').default('false'),
+    community_data: z.string().optional().transform(val => val === 'true').default('false')
   }).optional()
 });
 
