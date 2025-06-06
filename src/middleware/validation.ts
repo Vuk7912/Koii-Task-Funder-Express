@@ -20,7 +20,7 @@ export const validateRequest = (schema: z.ZodObject<any>) => {
       req.validatedData = {
         body: req.body || {},
         params: req.params || {},
-        query: validatedData.query
+        query: validatedData.query || {}
       };
 
       next();
@@ -60,12 +60,21 @@ export const coinDetailsSchema = z.object({
     coinId: z.string().min(1, 'Coin ID is required')
   }),
   query: z.object({
-    localization: z.string().optional().transform(val => val === 'true'),
+    localization: z.string().optional().transform(val => val === 'true').default('true'),
     tickers: z.string().optional().transform(val => val === 'true').default('false'),
     market_data: z.string().optional().transform(val => val === 'true').default('false'),
     community_data: z.string().optional().transform(val => val === 'true').default('false')
   }).optional()
-});
+}).transform(data => ({
+  body: {},
+  params: data.params,
+  query: data.query ? {
+    localization: data.query.localization,
+    market_data: data.query.market_data,
+    tickers: data.query.tickers,
+    community_data: data.query.community_data
+  } : {}
+}));
 
 /**
  * Schema for market data request validation
