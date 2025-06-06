@@ -1,4 +1,4 @@
-import mockCryptoPrices from '../data/crypto-prices.json';
+import mockCryptoPrices from '../data/crypto-prices.json' assert { type: 'json' };
 
 /**
  * Retrieves the list of coins from mock cryptocurrency data
