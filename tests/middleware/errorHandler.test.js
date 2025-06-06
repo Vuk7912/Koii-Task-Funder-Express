@@ -1,5 +1,5 @@
-const { describe, it, expect } = require('vitest');
-const { errorHandler, notFoundHandler } = require('../../src/middleware/errorHandler');
+import { describe, it, expect } from 'vitest';
+import { errorHandler, notFoundHandler } from '../../src/middleware/errorHandler.js';
 
 describe('Error Handling Middleware', () => {
   describe('errorHandler', () => {
