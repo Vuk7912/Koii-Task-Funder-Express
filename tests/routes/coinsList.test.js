@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getCoinsList } from '../../src/routes/coinsList'; // Adjust path as needed
+import { getCoinsList } from '../../src/routes/coinsList';
 import mockCryptoPrices from '../../src/data/crypto-prices.json';
 
 describe('Coins List Endpoint', () => {
