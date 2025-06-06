@@ -2,7 +2,13 @@ node_modules/
 dist/
 .env
 __pycache__/
+<<<<<<< HEAD
 *.log
 .DS_Store
 coverage/
 .nyc_output/
+=======
+coverage/
+*.log
+.DS_Store
+>>>>>>> pr-2-Merango-Koii-Task-Funder-Express

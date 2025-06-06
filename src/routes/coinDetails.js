@@ -8,19 +8,26 @@ const mockCoins = {
     symbol: 'btc',
     name: 'Bitcoin',
     description: 'The first decentralized cryptocurrency',
-    price: 50000
+    price: 50000,
+    market_cap: 1000000000000, // Added market cap for consistency
+    logo: 'https://example.com/bitcoin-logo.png'
   },
   'ethereum': {
     id: 'ethereum',
     symbol: 'eth',
     name: 'Ethereum',
     description: 'Blockchain platform with smart contract functionality',
-    price: 3000
+    price: 3000,
+    market_cap: 500000000000, // Added market cap for consistency
+    logo: 'https://example.com/ethereum-logo.png'
   }
 };
 
 // Create a cache instance
-const coinCache = new NodeCache({ stdTTL: 600 }); // 10 minutes cache
+const coinCache = new NodeCache({ 
+  stdTTL: 600, // 10 minutes cache
+  checkperiod: 120 // Check for expired keys every 2 minutes
+}); 
 
 /**
  * Validate coin ID input
