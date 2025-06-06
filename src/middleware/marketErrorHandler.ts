@@ -5,11 +5,13 @@ import { Request, Response, NextFunction } from 'express';
  */
 export class MarketError extends Error {
   statusCode: number;
+  originalType?: string;
 
-  constructor(message: string, statusCode: number = 500) {
+  constructor(message: string, statusCode: number = 500, originalType?: string) {
     super(message);
-    this.name = 'MarketError';
+    this.name = originalType || 'MarketError';
     this.statusCode = statusCode;
+    this.originalType = originalType;
   }
 }
 
@@ -18,19 +20,19 @@ export class MarketError extends Error {
  */
 export class InvalidParameterError extends MarketError {
   constructor(message: string) {
-    super(message, 400);
+    super(message, 400, 'InvalidParameterError');
   }
 }
 
 export class ResourceNotFoundError extends MarketError {
   constructor(message: string) {
-    super(message, 404);
+    super(message, 404, 'ResourceNotFoundError');
   }
 }
 
 export class RateLimitError extends MarketError {
   constructor(message: string = 'Too many requests') {
-    super(message, 429);
+    super(message, 429, 'RateLimitError');
   }
 }
 
@@ -50,7 +52,7 @@ export const marketErrorHandler = (
   if (err instanceof MarketError) {
     return res.status(err.statusCode).json({
       error: true,
-      type: err.name,
+      type: err.originalType || err.name,
       message: err.message,
       timestamp: new Date().toISOString()
     });
