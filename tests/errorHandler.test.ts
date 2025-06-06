@@ -1,8 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
+import express from 'express';
+import request from 'supertest';
 import { errorHandler, asyncHandler } from '../src/middleware/errorHandler';
 import { ApiError, ValidationError, NotFoundError, InternalServerError } from '../src/types/error';
-import express, { Request, Response, NextFunction } from 'express';
-import request from 'supertest';
+import { Request, Response, NextFunction } from 'express';
 
 describe('Error Handling Middleware', () => {
   describe('errorHandler', () => {
@@ -47,11 +48,16 @@ describe('Error Handling Middleware', () => {
   describe('asyncHandler', () => {
     it('should catch and forward async errors', async () => {
       const app = express();
-      const throwingHandler = asyncHandler(async () => {
-        throw new NotFoundError('Resource not found');
-      });
+      
+      // Set up route with asyncHandler and error handling middleware
+      app.get('/test', 
+        asyncHandler(async () => {
+          throw new NotFoundError('Resource not found');
+        })
+      );
 
-      app.get('/test', throwingHandler);
+      // Add global error handling middleware
+      app.use(errorHandler);
 
       const response = await request(app).get('/test');
       

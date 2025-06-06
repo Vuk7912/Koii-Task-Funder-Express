@@ -7,7 +7,11 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "keywords": ["mock", "api", "cryptocurrency"],
+  "keywords": [
+    "mock",
+    "api",
+    "cryptocurrency"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
