@@ -1,4 +1,4 @@
-import * as NodeCache from 'node-cache';
+import NodeCache from 'node-cache';
 
 /**
  * Caching service for market data
@@ -43,7 +43,7 @@ class MarketDataCache {
    * @param {number} [ttl] - Optional time to live in seconds
    */
   public set<T>(key: string, value: T, ttl?: number): boolean {
-    return this.cache.set(key, value, ttl);
+    return this.cache.set(key, value, ttl || undefined);
   }
 
   /**
@@ -63,4 +63,4 @@ class MarketDataCache {
   }
 }
 
-export = MarketDataCache;
+export default MarketDataCache;
