@@ -1,42 +1,22 @@
 {
-    "bitcoin": {
-        "id": "bitcoin",
-        "symbol": "btc",
-        "name": "Bitcoin",
-        "current_price": 45000.50,
-        "market_cap": 850000000000,
-        "market_cap_rank": 1,
-        "total_volume": 25000000000,
-        "price_change_percentage_24h": 2.5
-    },
-    "ethereum": {
-        "id": "ethereum", 
-        "symbol": "eth",
-        "name": "Ethereum",
-        "current_price": 3200.75,
-        "market_cap": 380000000000,
-        "market_cap_rank": 2,
-        "total_volume": 15000000000,
-        "price_change_percentage_24h": 1.8
-    },
-    "cardano": {
-        "id": "cardano",
-        "symbol": "ada", 
-        "name": "Cardano",
-        "current_price": 1.25,
-        "market_cap": 40000000000,
-        "market_cap_rank": 7,
-        "total_volume": 2000000000,
-        "price_change_percentage_24h": 3.2
-    },
-    "dogecoin": {
-        "id": "dogecoin",
-        "symbol": "doge",
-        "name": "Dogecoin", 
-        "current_price": 0.15,
-        "market_cap": 20000000000,
-        "market_cap_rank": 10,
-        "total_volume": 1000000000,
-        "price_change_percentage_24h": 4.5
-    }
+  "bitcoin": {
+    "usd": 45000.5,
+    "id": "bitcoin",
+    "name": "Bitcoin",
+    "symbol": "btc",
+    "market_cap_rank": 1,
+    "market_cap": 850000000000,
+    "price_change_percentage_24h": 2.5,
+    "total_volume": 25000000000
+  },
+  "ethereum": {
+    "usd": 3200.75,
+    "id": "ethereum", 
+    "name": "Ethereum",
+    "symbol": "eth",
+    "market_cap_rank": 2,
+    "market_cap": 380000000000,
+    "price_change_percentage_24h": 1.8,
+    "total_volume": 15000000000
+  }
 }
