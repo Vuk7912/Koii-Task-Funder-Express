@@ -43,6 +43,9 @@ class MarketDataCache {
    * @param {number} [ttl] - Optional time to live in seconds
    */
   public set<T>(key: string, value: T, ttl?: number): boolean {
+    if (ttl === undefined) {
+      return this.cache.set(key, value);
+    }
     return this.cache.set(key, value, ttl);
   }
 
