@@ -1,4 +1,3 @@
-import { describe, it, expect, beforeEach } from 'vitest';
 import MarketDataCache from '../services/market-data-cache';
 
 describe('MarketDataCache', () => {
@@ -15,35 +14,36 @@ describe('MarketDataCache', () => {
     expect(marketDataCache).toBe(anotherInstance);
   });
 
-  it('should set and get cache data', () => {
-    const key = 'test_key';
-    const value = { bitcoin: 50000 };
+  it('should set and get cache values', () => {
+    const testKey = 'test_key';
+    const testValue = { data: 'test_data' };
 
-    marketDataCache.set(key, value);
-    const cachedData = marketDataCache.get(key);
+    marketDataCache.set(testKey, testValue);
+    const retrievedValue = marketDataCache.get(testKey);
 
-    expect(cachedData).toEqual(value);
+    expect(retrievedValue).toEqual(testValue);
   });
 
-  it('should delete specific cache entry', () => {
-    const key = 'delete_key';
-    const value = { ethereum: 3000 };
+  it('should delete specific cache entries', () => {
+    const testKey = 'delete_key';
+    const testValue = { data: 'delete_data' };
 
-    marketDataCache.set(key, value);
-    const deletedCount = marketDataCache.del(key);
-    const cachedData = marketDataCache.get(key);
+    marketDataCache.set(testKey, testValue);
+    const deletedCount = marketDataCache.del(testKey);
 
     expect(deletedCount).toBe(1);
-    expect(cachedData).toBeUndefined();
+    expect(marketDataCache.get(testKey)).toBeUndefined();
   });
 
   it('should flush entire cache', () => {
-    marketDataCache.set('key1', { data: 1 });
-    marketDataCache.set('key2', { data: 2 });
+    const key1 = 'key1';
+    const key2 = 'key2';
 
+    marketDataCache.set(key1, { data: 'value1' });
+    marketDataCache.set(key2, { data: 'value2' });
     marketDataCache.flush();
 
-    expect(marketDataCache.get('key1')).toBeUndefined();
-    expect(marketDataCache.get('key2')).toBeUndefined();
+    expect(marketDataCache.get(key1)).toBeUndefined();
+    expect(marketDataCache.get(key2)).toBeUndefined();
   });
 });
