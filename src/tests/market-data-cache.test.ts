@@ -18,9 +18,10 @@ describe('MarketDataCache', () => {
     const testKey = 'test_key';
     const testValue = { data: 'test_data' };
 
-    marketDataCache.set(testKey, testValue);
-    const retrievedValue = marketDataCache.get(testKey);
+    const result = marketDataCache.set(testKey, testValue);
+    expect(result).toBeTruthy();
 
+    const retrievedValue = marketDataCache.get(testKey);
     expect(retrievedValue).toEqual(testValue);
   });
 
