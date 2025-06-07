@@ -1,4 +1,4 @@
-import NodeCache from 'node-cache';
+import * as NodeCache from 'node-cache';
 
 /**
  * Caching service for market data
@@ -63,4 +63,4 @@ class MarketDataCache {
   }
 }
 
-export default MarketDataCache;
+export = MarketDataCache;
