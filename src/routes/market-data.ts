@@ -1,5 +1,10 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import MarketDataCache from '../services/market-data-cache';
+import { 
+  MarketError, 
+  InvalidParameterError, 
+  ResourceNotFoundError 
+} from '../middleware/marketErrorHandler';
 
 const router = express.Router();
 const marketDataCache = MarketDataCache.getInstance();
@@ -7,16 +12,18 @@ const marketDataCache = MarketDataCache.getInstance();
 /**
  * Get market data for given coin IDs
  * Supports caching to improve performance
+ * Enhanced with more robust error handling
  */
-router.get('/market-data', async (req: Request, res: Response) => {
+router.get('/market-data', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { ids, vs_currencies } = req.query;
 
-    // Validate input
-    if (!ids || !vs_currencies) {
-      return res.status(400).json({ 
-        error: 'Missing required parameters: ids, vs_currencies' 
-      });
+    // Enhanced input validation using custom error types
+    if (!ids) {
+      throw new InvalidParameterError('Missing required parameter: ids');
+    }
+    if (!vs_currencies) {
+      throw new InvalidParameterError('Missing required parameter: vs_currencies');
     }
 
     // Create a unique cache key based on input
@@ -35,13 +42,18 @@ router.get('/market-data', async (req: Request, res: Response) => {
       }
     };
 
+    // Validate retrieved data
+    if (Object.keys(marketData).length === 0) {
+      throw new ResourceNotFoundError(`No market data found for ids: ${ids}`);
+    }
+
     // Cache the result
     marketDataCache.set(cacheKey, marketData);
 
     res.json(marketData);
   } catch (error) {
-    console.error('Market data retrieval error:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    // Forward to centralized error handler
+    next(error);
   }
 });
 
